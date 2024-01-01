@@ -15,10 +15,7 @@ class OutOfStock(ValueError):
 
 
 class Batch:
-
-    def __init__(
-            self, ref: str, sku: str, qty: int, eta: Optional[date] = None
-    ):
+    def __init__(self, ref: str, sku: str, qty: int, eta: Optional[date] = None):
         self.ref = ref
         self.sku = sku
         self.eta = eta

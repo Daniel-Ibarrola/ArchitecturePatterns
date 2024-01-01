@@ -2,7 +2,6 @@ from model import Batch, OrderLine
 
 
 class TestAllocate:
-
     def test_allocating_to_a_batch_reduces_available_quantity(self):
         batch = Batch("batch-001", "SMALL-TABLE", 20)
         order_line = OrderLine("order-001", "SMALL-TABLE", 2)
@@ -23,7 +22,6 @@ class TestAllocate:
 
 
 class TestDeallocate:
-
     def test_deallocating_a_line_increases_available_quantity(self):
         batch = Batch("batch-001", "SMALL-TABLE", 20)
         order_line = OrderLine("order-001", "SMALL-TABLE", 2)
@@ -43,7 +41,6 @@ class TestDeallocate:
 
 
 class TestBatchCanAllocate:
-
     def test_can_allocate_if_available_greater_than_required(self):
         batch = Batch("batch-001", "SMALL-TABLE", 20)
         order_line = OrderLine("order-001", "SMALL-TABLE", 2)
@@ -54,7 +51,9 @@ class TestBatchCanAllocate:
         order_line = OrderLine("order-001", "SMALL-TABLE", 20)
         assert batch.can_allocate(order_line)
 
-    def test_cannot_allocate_to_batch_if_available_quantity_is_less_than_order_line(self):
+    def test_cannot_allocate_to_batch_if_available_quantity_is_less_than_order_line(
+        self,
+    ):
         batch = Batch("batch-002", "BLUE-CUSHION", 1)
         order_line = OrderLine("order-002", "BLUE-CUSHION", 2)
 
