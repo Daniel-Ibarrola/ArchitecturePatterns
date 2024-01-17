@@ -3,11 +3,14 @@ from datetime import date
 from typing import Optional
 
 
-@dataclass(frozen=True)
+@dataclass(frozen=False)
 class OrderLine:
     orderid: str
     sku: str
     qty: int
+
+    def __hash__(self):
+        return hash((self.orderid, self.sku, self.qty))
 
 
 class OutOfStock(ValueError):
